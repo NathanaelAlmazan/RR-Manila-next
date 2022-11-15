@@ -95,7 +95,7 @@ export function AgentStepDetails(
     { duration, personnel }: { duration: string, personnel: string }
 ) {
     return (
-        <Stack spacing={2} direction={{ xs: "column", sm: "row" }} sx={{ mt: 2 }}>
+        <Stack spacing={2} direction="column" sx={{ mt: 1 }}>
             <Stack direction="row" spacing={1}>
                 <TimelapseIcon />
                 <Typography variant="body2">

@@ -66,9 +66,25 @@ export const GET_CITIZEN_CHARTER = gql`
 `
 
 export const GET_CITIZEN_CHARTER_UID_LIST = gql`
-    query Query {
-        citizenCharterUidList
+    query CitizenCharterList {
+        citizenCharterList {
+            charter_uid
+        }  
     }
+    
+`
+
+export const GET_CITIZEN_CHARTER_LIST = gql`
+    query CitizenCharterList {
+        citizenCharterList {
+            title
+            total_fee
+            total_duration
+            description
+            charter_uid
+        }
+    }
+    
 `
 
 export const GET_TRANSACTION_TYPES = gql`
@@ -96,6 +112,35 @@ export const GET_RELATED_CHARTERS = gql`
             title
             total_fee
             total_duration
+        }
+    }
+`
+
+export const GET_SEARCH_SUGGESTIONS = gql`
+    query Query($query: String!) {
+        charterSearchSuggestions(query: $query)
+    }
+`
+
+export const SEARCH_CITIZEN_CHARTER = gql`
+    query SearchCitizenCharter($query: String!) {
+        searchCitizenCharter(query: $query) {
+            charter_uid
+            title
+            total_duration
+            total_fee
+            description
+            registries {
+                register_office
+            }
+            taxpayer_requirements {
+                requirements {
+                    req_name
+                }
+            }
+            client_process {
+                step_desc
+            }
         }
     }
 `

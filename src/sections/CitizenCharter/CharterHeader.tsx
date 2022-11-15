@@ -17,7 +17,7 @@ interface CharterHeaderProps {
 function CharterHeader(props: CharterHeaderProps) {
     const { title, description, processDuration, processFee } = props;
     return (
-        <Box sx={{ mt: 2 }}>
+        <Box sx={{ mt: 5 }}>
             <Typography variant="subtitle1">
                 {'Citizen Charter'}
             </Typography>
@@ -31,8 +31,8 @@ function CharterHeader(props: CharterHeaderProps) {
                     alignItems: "center"
                 }}>
                     <AccessTimeIcon />
-                    <Typography variant="caption" sx={{ m: 1 }}>
-                        {`${processDuration} Process Time`}
+                    <Typography variant="subtitle1" sx={{ m: 1 }}>
+                        {`${processDuration} Process`}
                     </Typography>
                 </Box>
                 <Box sx={{
@@ -41,8 +41,8 @@ function CharterHeader(props: CharterHeaderProps) {
                     alignItems: "center"
                 }}>
                     <PaymentsIcon />
-                    <Typography variant="caption" sx={{ m: 1 }}>
-                        {`${processFee === 0 ? "No": `₱ ${processFee.toFixed(2)}`} Process Fee`}
+                    <Typography variant="subtitle1" sx={{ m: 1 }}>
+                        {`${processFee === 0 ? "No": `₱ ${processFee.toFixed(2)}`} Fee`}
                     </Typography>
                 </Box>
             </Stack>

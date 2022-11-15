@@ -24,6 +24,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 position: 'absolute',
                 top: 5,
                 left: 5,
+                zIndex: 10,
                 display: { sm: 'flex', md: 'none' }
             }}>
                 <IconButton onClick={handleToggleDrawer}>

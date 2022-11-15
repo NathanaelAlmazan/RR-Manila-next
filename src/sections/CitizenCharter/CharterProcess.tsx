@@ -45,7 +45,7 @@ export default function AvailingProcess(props: AvailingProcessProps) {
   }
 
   return (
-    <Box sx={{ pr: 2 }}>
+    <Box>
         <Typography variant="h5" sx={{ mt: 5, mb: 2 }}>
             Application Process
         </Typography>
@@ -93,64 +93,66 @@ export default function AvailingProcess(props: AvailingProcessProps) {
                 </Step>
             ))}
         </Stepper>
-        <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
-            <MobileStepper
-                variant="progress"
-                steps={clientProcess.length}
-                position="static"
-                activeStep={activeStep}
-                nextButton={
-                <Button
-                    size="small"
-                    onClick={handleNext}
-                    disabled={activeStep === clientProcess.length - 1}
-                >
-                    Next
-                    {theme.direction === 'rtl' ? (
-                        <KeyboardArrowLeft />
-                    ) : (
-                        <KeyboardArrowRight />
-                    )}
-                </Button>
-                }
-                backButton={
-                <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                    {theme.direction === 'rtl' ? (
-                        <KeyboardArrowRight />
-                    ) : (
-                        <KeyboardArrowLeft />
-                    )}
-                    Back
-                </Button>
-                }
-            />
-            <Paper
-                square
-                elevation={0}
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    height: 50,
-                    bgcolor: 'background.default',
-                }}
-            >
-                <Typography variant="subtitle2">{`Step ${activeStep + 1}`}</Typography>
-            </Paper>
-            <Box sx={{ maxWidth: 400, width: '100%', overflowY: 'auto' }}>
-                <Typography variant="subtitle1" sx={{ mb: 2 }}>
-                    {clientProcess[activeStep].step_desc}
-                </Typography>
-                <StepDetails 
-                    fee={clientProcess[activeStep].fees}
-                    duration={clientProcess[activeStep].duration}
-                    personnel={clientProcess[activeStep].personnel}
-                    notes={clientProcess[activeStep].notes}
+        {clientProcess.length > 0 && (
+            <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
+                <MobileStepper
+                    variant="progress"
+                    steps={clientProcess.length}
+                    position="static"
+                    activeStep={activeStep}
+                    nextButton={
+                    <Button
+                        size="small"
+                        onClick={handleNext}
+                        disabled={activeStep === clientProcess.length - 1}
+                    >
+                        Next
+                        {theme.direction === 'rtl' ? (
+                            <KeyboardArrowLeft />
+                        ) : (
+                            <KeyboardArrowRight />
+                        )}
+                    </Button>
+                    }
+                    backButton={
+                    <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                        {theme.direction === 'rtl' ? (
+                            <KeyboardArrowRight />
+                        ) : (
+                            <KeyboardArrowLeft />
+                        )}
+                        Back
+                    </Button>
+                    }
                 />
-                {agentActions(clientProcess[activeStep].process_step).length > 0 && (
-                    <AgentActions agentActions={agentActions(clientProcess[activeStep].process_step)} />
-                )}
+                <Paper
+                    square
+                    elevation={0}
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        height: 50,
+                        bgcolor: 'background.default',
+                    }}
+                >
+                    <Typography variant="subtitle2">{`Step ${activeStep + 1}`}</Typography>
+                </Paper>
+                <Box sx={{ maxWidth: 400, width: '100%', overflowY: 'auto' }}>
+                    <Typography variant="subtitle1" sx={{ mb: 2 }}>
+                        {clientProcess[activeStep].step_desc}
+                    </Typography>
+                    <StepDetails 
+                        fee={clientProcess[activeStep].fees}
+                        duration={clientProcess[activeStep].duration}
+                        personnel={clientProcess[activeStep].personnel}
+                        notes={clientProcess[activeStep].notes}
+                    />
+                    {agentActions(clientProcess[activeStep].process_step).length > 0 && (
+                        <AgentActions agentActions={agentActions(clientProcess[activeStep].process_step)} />
+                    )}
+                </Box>
             </Box>
-        </Box>
+        )}
     </Box>
   );
 }

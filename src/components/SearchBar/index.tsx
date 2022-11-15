@@ -8,28 +8,42 @@ import InputAdornment from "@mui/material/InputAdornment";
 // icons
 import SearchIcon from '@mui/icons-material/Search';
 // apollo
-import { useLazyQuery } from "@apollo/client";
-import { BANK_ADDRESSES } from "src/apollo/accredited-banks/queries";
+import { DocumentNode, useLazyQuery } from "@apollo/client";
 
 interface SearchBarProps {
     placeholder: string,
-    onSearchChange: (query: string | null) => void
+    onSearchChange: (query: string | null) => void,
+    queryDocument: DocumentNode,
+    queryObject: string,
+    searchQuery?: string
 }
 
 function SearchBar(props: SearchBarProps) {
-    const { placeholder, onSearchChange } = props;
-    const [getSuggestions, { loading, data: addresses }] = useLazyQuery(BANK_ADDRESSES);
+    const { placeholder, queryDocument, queryObject, searchQuery, onSearchChange } = props;
+    const [getSuggestions, { loading, data }] = useLazyQuery(queryDocument);
+    const [input, setInput] = React.useState<string>("");
+
+    React.useEffect(() => {
+        if (searchQuery) setInput(searchQuery);
+    }, [searchQuery])
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        onSearchChange(input)
+    }
 
     return (
-        <Box sx={{ p: 3 }}>
+        <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%'}} noValidate>
             <Autocomplete
                 freeSolo
-                options={addresses ? addresses.bankAddresses : []}
+                options={data ? data[queryObject] : []}
                 loading={loading}
+                inputValue={input}
                 onInputChange={(event, value) => {
-                    if (value.length > 3) {
+                    if (value.length > 2) {
                         getSuggestions({ variables: { query: value } })
                     }
+                    setInput(value)
                 }}
                 onChange={(event: any, newValue: string | null) => {
                     onSearchChange(newValue);

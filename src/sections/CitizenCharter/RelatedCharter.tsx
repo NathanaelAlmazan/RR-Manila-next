@@ -14,7 +14,7 @@ import { CitizenCharter } from 'src/apollo/citizen-charter/types';
 function RelatedCharter({ relatedCharters }: { relatedCharters: CitizenCharter[] }) {
   return (
     <Box sx={{
-        mt: 5,
+        mt: 8,
         p: 3,
         backgroundColor: (theme) => theme.palette.grey[200]
     }}>
@@ -23,7 +23,7 @@ function RelatedCharter({ relatedCharters }: { relatedCharters: CitizenCharter[]
         </Typography>
         <Grid container spacing={2} sx={{ mt: 2, mb: 3 }}>
             {relatedCharters.map(charter => (
-                <Grid key={charter.title} item xs={12} sm={6}>
+                <Grid key={charter.title} item sm={12} md={6}>
                     <Box sx={{
                         display: "flex",
                         flexDirection: "column"
@@ -39,7 +39,7 @@ function RelatedCharter({ relatedCharters }: { relatedCharters: CitizenCharter[]
                             }}>
                                 <AccessTimeIcon />
                                 <Typography variant="caption" sx={{ m: 1 }}>
-                                    {charter.total_duration}
+                                    {`${charter.total_duration} Process`}
                                 </Typography>
                             </Box>
                             <Box sx={{

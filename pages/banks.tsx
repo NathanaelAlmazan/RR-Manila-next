@@ -20,7 +20,8 @@ import { useLazyQuery } from "@apollo/client";
 import { 
   REVENUE_DISTRICT_OFFICES, 
   ACCREDITED_BANKS_BY_RDO,
-  ACCREDITED_BANKS_BY_ADDRESS
+  ACCREDITED_BANKS_BY_ADDRESS,
+  BANK_ADDRESSES
 } from "src/apollo/accredited-banks/queries";
 import { 
   AccreditedBanks, 
@@ -142,10 +143,14 @@ export default function Home(
               pt: 5
             }}
           >
-            <SearchBar
-              placeholder="Search a location"
-              onSearchChange={handleSearchChange}
-            />
+            <Box sx={{ p: 3 }}>
+              <SearchBar
+                placeholder="Search a location"
+                onSearchChange={handleSearchChange}
+                queryDocument={BANK_ADDRESSES}
+                queryObject="bankAddresses"
+              />
+            </Box>
             <DistrictList 
               selected={mapBankDistrict(banks)}
               districtOffices={districtOffices} 

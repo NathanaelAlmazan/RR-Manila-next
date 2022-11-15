@@ -58,7 +58,7 @@ export interface ClientProcess {
     charter_uid: string;
     step_desc: string;
     notes: string | null;
-    fees: number | null;
+    fees: number;
     duration: string;
     personnel: string;
 }

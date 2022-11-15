@@ -8,9 +8,9 @@ import PersonIcon from '@mui/icons-material/Person';
 import NotesIcon from '@mui/icons-material/Notes';
 
 interface StepDetailsProps {
-    fee: number | null;
-    duration: string | null;
-    personnel: string | null;
+    fee: number;
+    duration: string;
+    personnel: string;
     notes: string | null;
 }
 
@@ -18,32 +18,32 @@ export default function StepDetails(props: StepDetailsProps) {
     const { fee, duration, personnel, notes } = props;
     return (
         <Stack spacing={2} sx={{ px: 2 }}>
+             {notes !== null && (
+                <Stack direction="row" spacing={1}>
+                    <NotesIcon />
+                    <Typography variant="body2">
+                        {'Note: '} <i>{notes}</i>
+                    </Typography>
+                </Stack>
+            )}
             <Stack direction="row" spacing={1}>
                 <PaymentsIcon />
                 <Typography variant="body2">
-                    {fee ? `₱ ${fee.toFixed(2)} Process Fee` : "No Process Fee"}
+                    {fee > 0 ? `₱ ${fee.toFixed(2)} Fee` : "No Fee"}
                 </Typography>
             </Stack>
             <Stack direction="row" spacing={1}>
                 <TimelapseIcon />
                 <Typography variant="body2">
-                    {duration ? `${duration} Process Time` : "No Process Time"}
+                    {duration.length > 0 ? `${duration} Process` : "Unspecified Duration"}
                 </Typography>
             </Stack>
             <Stack direction="row" spacing={1}>
                 <PersonIcon />
                 <Typography variant="body2">
-                    {personnel ? personnel : "No Personnel Assigned"}
+                    {personnel.length > 0 ? personnel : "No Personnel Assigned"}
                 </Typography>
             </Stack>
-            {notes !== null && (
-                <Stack direction="row" spacing={1}>
-                    <NotesIcon />
-                    <Typography variant="body2">
-                        {notes}
-                    </Typography>
-                </Stack>
-            )}
         </Stack>
     )
 }

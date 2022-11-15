@@ -39,7 +39,7 @@ export default function ChecklistOfRequirements(props: RequirementsProps) {
             <Typography variant="h5" sx={{ mt: 5, mb: 2 }}>
                 Checklist of Requirements
             </Typography>
-            <Stack spacing={2} sx={{ mr: 2 }}>
+            <Stack spacing={2}>
                 {taxpayers.map(taxpayer => (
                     <TaxpayerRequirementCard
                         key={taxpayer.taxpayer_name}
@@ -50,9 +50,9 @@ export default function ChecklistOfRequirements(props: RequirementsProps) {
            {additional.length > 0 && (
             <>
                 <Typography variant="h5" sx={{ mt: 4, mb: 2 }}>
-                    Additional Checklist of Requirements
+                    Additional Requirements
                 </Typography>
-                <Stack spacing={2} sx={{ mr: 2 }}>
+                <Stack spacing={2}>
                     {additional.map(req => (
                         <AdditionalRequirementCard
                             key={req.condition}
