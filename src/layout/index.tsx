@@ -22,8 +22,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             />
             <Box sx={{
                 position: 'absolute',
-                top: 10,
-                left: 10,
+                top: 5,
+                left: 5,
                 display: { sm: 'flex', md: 'none' }
             }}>
                 <IconButton onClick={handleToggleDrawer}>

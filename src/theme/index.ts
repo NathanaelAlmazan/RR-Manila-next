@@ -29,16 +29,17 @@ export const themeOptions: ThemeOptions = {
       fontWeight: 700,
     },
     h4: {
-      fontWeight: 600,
+      fontWeight: 700,
     },
     h5: {
       fontWeight: 600,
     },
     h6: {
-      fontWeight: 600,
+      fontWeight: 500,
     },
     body1: {
       fontWeight: 300,
+      fontSize: 18
     },
     subtitle2: {
       fontWeight: 600,

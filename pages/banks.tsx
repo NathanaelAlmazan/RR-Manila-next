@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 // project components
 import MainLayout from 'src/layout';
-import SearchBar from "src/components/SearchBar"
+import SearchBar from "src/components/SearchBar";
 import { 
   BankList, 
   BankTags, 

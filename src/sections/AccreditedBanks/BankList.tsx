@@ -22,7 +22,7 @@ function BankList({ selected, accreditedBanks, onPinBank }: BankListProps) {
 
     React.useEffect(() => {
         setPage(1)
-    }, [accreditedBanks])
+    }, [accreditedBanks, selected])
 
     const handlePageChange = (page: number) => {
         setPage(page + 1);

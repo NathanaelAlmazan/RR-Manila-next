@@ -57,7 +57,7 @@ const DrawerContent = ({ mobile, currentPath, handleClick }:
     { mobile?: boolean, currentPath: string, handleClick: (path: string) => void }
 ) => (
     <>
-        <List sx={{ my: mobile ? 2 : 8 }}>
+        <List sx={{ my: mobile ? 2 : 6 }}>
             {appPaths.map(path => (
                 <ListItem 
                     key={path.label} 
@@ -65,7 +65,6 @@ const DrawerContent = ({ mobile, currentPath, handleClick }:
                     sx={{
                         color: 'white',
                         ...(currentPath === path.path && {
-                            color: 'white',
                             backgroundColor: (theme) => theme.palette.primary.dark,
                         })
                     }}
@@ -85,7 +84,7 @@ const DrawerContent = ({ mobile, currentPath, handleClick }:
                 bottom: 0,
                 left: 0,
                 width: '100%',
-                py: 8
+                py: 6
             }}
         >
             <Typography 
