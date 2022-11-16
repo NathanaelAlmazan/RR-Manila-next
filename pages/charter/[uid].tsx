@@ -33,6 +33,7 @@ export default function CitizenCharterPage(
     { citizenCharter, relatedCitizenCharters }: 
     { citizenCharter: CitizenCharter, relatedCitizenCharters: CitizenCharter[] }
 ) {
+    const router = useRouter();
     const { 
         title, 
         description, 
@@ -47,7 +48,6 @@ export default function CitizenCharterPage(
         registries,
         transactions
     } = citizenCharter;
-    const router = useRouter();
 
     const handleSearchQuery = (searchQuery: string | null) => {
         if (searchQuery) {
@@ -160,7 +160,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
                 uid: path.charter_uid
             }
         })),
-        fallback: true
+        fallback: false
     }
 }
 
